@@ -168,6 +168,15 @@ class ActionGroup extends React.Component {
   }
 }
 
+class PureProtector extends React.PureComponent<{children: ?any}> {
+  render() {
+    return (
+      <React.Fragment>
+        {React.Children.only(this.props.children)}
+      </React.Fragment>
+    );
+  }
+}
 // Has same API as https://facebook.github.io/react-native/docs/actionsheetios.html
 export default class ActionSheet extends React.Component {
   props: ActionSheetProps;
@@ -200,7 +209,9 @@ export default class ActionSheet extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        {React.Children.only(this.props.children)}
+        <PureProtector>
+          {React.Children.only(this.props.children)}
+        </PureProtector>
         {overlay}
         {sheet}
       </View>
