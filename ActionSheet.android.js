@@ -162,7 +162,7 @@ class ActionGroup extends React.Component {
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>
         </View>
-        {this.renderRowSeparator()}
+        {this._renderRowSeparator()}
       </View>
     );
   }
